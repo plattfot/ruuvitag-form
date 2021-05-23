@@ -166,7 +166,7 @@ def run(argv):
         elif args.format == 'influxdb':
             for mac,tag in tags.items():
                 time_d = datetime.datetime.fromisoformat(tag.time)
-                time_d.replace(tzinfo=datetime.timezone.utc)
+                time_d = time_d.replace(tzinfo=datetime.timezone.utc)
                 # Note precision loss when calling timestamp(),
                 # multiply by 1000M then to int. But datetime does not
                 # have a time.time_ns() equivalent yet.
