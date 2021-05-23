@@ -168,9 +168,9 @@ def run(argv):
                 time_d = datetime.datetime.fromisoformat(tag.time)
                 time_d.replace(tzinfo=datetime.timezone.utc)
                 # Note precision loss when calling timestamp(),
-                # multiply by 1M then to int. But datetime does not
+                # multiply by 100M then to int. But datetime does not
                 # have a time.time_ns() equivalent yet.
-                timestamp = int(time_d.timestamp() * 1000000)
+                timestamp = int(time_d.timestamp() * 1000000000)
 
                 print(f"temperature,mac={mac} temp_C={tag.temperature} {timestamp}")
                 print(f"humidity,mac={mac} humidity_percent={tag.humidity} {timestamp}")
