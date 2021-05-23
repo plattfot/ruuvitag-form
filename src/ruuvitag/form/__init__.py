@@ -1,19 +1,19 @@
 # Copyright (C) 2020  Fredrik Salomonsson
 
-# This file is part of ruuvitag-bar.
+# This file is part of ruuvitag-form.
 
-# Ruuvitag-bar is free software: you can redistribute it and/or
+# ruuvitag-form is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 
-# Ruuvitag-bar is distributed in the hope that it will be useful,
+# ruuvitag-form is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 # General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with ruuvitag-bar. If not, see
+# along with ruuvitag-form. If not, see
 # <https://www.gnu.org/licenses/>.
 
 """Display information from a ruuvitag-hark server
@@ -46,7 +46,7 @@ class Arguments:
 def parse_arguments(argv):
     parser = ArgparseFaux(prog=os.path.basename(argv[0]))
     helpstring=f"""usage: {parser.prog} [OPTIONS]... ADDRESS
-Display information from a ruuvitag-hark server
+Display information from a ruuvitag-hark server in a specified format.
 
 Options:
   -F, --format FORMAT  Specify what FORMAT to use for the output. See FORMAT

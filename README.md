@@ -1,14 +1,17 @@
-# Ruuvitag-bar
+# Ruuvitag-form
 
 Simple program that fetches data from a server running
-[ruuvitag-hark](https://github.com/plattfot/ruuvitag-hark) and outputs
-it to stdout in a certain format that other programs then can consume.
+[ruuvitag-hark](https://github.com/plattfot/ruuvitag-hark) and output
+that to stdout in a format that other programs then can then consume.
 
-Right now it only supports:
+Right now it supports:
 
 - [waybar](https://github.com/Alexays/Waybar): Will show temperature,
   humidity and air pressure.
-- [influxdb](https://www.influxdata.com/products/influxdb-overview/): Output the data in the [line-protocol](https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/), which then can be imported to influxdb.
+- [influxdb](https://www.influxdata.com/products/influxdb-overview/):
+  Output the data in the
+  [line-protocol](https://docs.influxdata.com/influxdb/v2.0/reference/syntax/line-protocol/),
+  which then can be imported to influxdb.
 
 ## Install
 
@@ -18,7 +21,7 @@ path to where you cloned this.
 ## Usage
 
 Setup a server running
-[ruuvitag-hark](https://github.com/plattfot/ruuvitag-hark). Then depending on what bar you use:
+[ruuvitag-hark](https://github.com/plattfot/ruuvitag-hark). Then depending on what program you use:
 
 ### Waybar
 
@@ -27,7 +30,7 @@ Add this to your waybar config
 ```
 "custom/ruuvitag": {
     "format": "{}",
-    "exec": "$HOME/.local/bin/ruuvitag-bar ADDRESS:PORT",
+    "exec": "$HOME/.local/bin/ruuvitag-form ADDRESS:PORT",
     "interval": 60,
     "return-type": "json"
 }
@@ -45,7 +48,7 @@ and using a [bash](https://www.gnu.org/software/bash/) compatible
 shell you can import data by running:
 
 ```bash
-influx write -b BUCKET -f <(ruuvitag-bar ADDRESS:PORT --format=influxdb)
+influx write -b BUCKET -f <(ruuvitag-form ADDRESS:PORT --format=influxdb)
 ```
 
 Where `ADDRESS` is the local address to the machine running
