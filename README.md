@@ -15,13 +15,35 @@ Right now it supports:
 
 ## Install
 
-Clone this and run `pip install <clone> -U` where `<clone>` is the
-path to where you cloned this.
+### From source
+
+Clone this repository to you machine. In the following subsections
+`CLONE` will reference the path you cloned this to.
+
+After you have cloned it, follow the instructions in the subsection
+matching the tool you want to use to install this.
+
+#### Guix
+
+Install it with [guix](https://guix.gnu.org).
+
+```
+guix install -f CLONE/build-aux/guix.scm
+```
+
+#### Pip
+
+Install it with [pip](https://pip.pypa.io/en/stable/)
+
+```
+pip install CLONE -U
+```
 
 ## Usage
 
 Setup a server running
-[ruuvitag-hark](https://github.com/plattfot/ruuvitag-hark). Then depending on what program you use:
+[ruuvitag-hark](https://github.com/plattfot/ruuvitag-hark). Then
+depending on what program you use.
 
 ### Waybar
 
