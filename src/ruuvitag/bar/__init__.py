@@ -24,6 +24,8 @@ import os
 import sys
 import pycurl
 import json
+import datetime
+
 from io import BytesIO
 
 class ArgparseFaux:
@@ -52,7 +54,9 @@ Options:
   -h, --help           Print this message then exits
 
 FORMAT:
-  Supported formats waybar.
+  Supported formats:
+    waybar: wayland bar for wlroots based compositors.
+    influxdb: time series database.
 """
     args = Arguments()
     try:
@@ -159,7 +163,22 @@ def run(argv):
                           sys.stdout)
             else:
                 json.dump({'text': str(Tag()), 'class': 'ruuvitag', 'percentage': 0}, sys.stdout)
+        elif args.format == 'influxdb':
+            for mac,tag in tags.items():
+                time_d = datetime.datetime.fromisoformat(tag.time)
+                time_d = time_d.replace(tzinfo=datetime.timezone.utc)
+                # Note precision loss when calling timestamp(),
+                # multiply by 1000M then to int. But datetime does not
+                # have a time.time_ns() equivalent yet.
+                timestamp = int(time_d.timestamp() * 1000000000)
 
+                print(f"temperature,mac={mac} temp_C={tag.temperature} {timestamp}")
+                print(f"humidity,mac={mac} humidity_percent={tag.humidity} {timestamp}")
+                print(f"pressure,mac={mac} pressure_hPa={tag.pressure} {timestamp}")
+                print(f"acceleration_x,mac={mac} acceleration_g={tag.acceleration.x} {timestamp}")
+                print(f"acceleration_y,mac={mac} acceleration_g={tag.acceleration.y} {timestamp}")
+                print(f"acceleration_z,mac={mac} acceleration_g={tag.acceleration.z} {timestamp}")
+                print(f"battery,mac={mac} battery_volt={tag.battery} {timestamp}")
         else:
             parser.error(f'{args.format} is currently not supported')
     except KeyError:
