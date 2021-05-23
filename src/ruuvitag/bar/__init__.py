@@ -172,13 +172,13 @@ def run(argv):
                 # have a time.time_ns() equivalent yet.
                 timestamp = int(time_d.timestamp() * 1000000)
 
-                print(f"temperature,mac='{mac}' temp_C={tag.temperature} {timestamp}")
-                print(f"humidity,mac='{mac}' humidity_percent={tag.humidity} {timestamp}")
-                print(f"pressure,mac='{mac}' pressure_hPa={tag.pressure} {timestamp}")
-                print(f"acceleration_x,mac='{mac}' acceleration_g={tag.acceleration.x} {timestamp}")
-                print(f"acceleration_y,mac='{mac}' acceleration_g={tag.acceleration.y} {timestamp}")
-                print(f"acceleration_z,mac='{mac}' acceleration_g={tag.acceleration.z} {timestamp}")
-                print(f"battery,mac='{mac}' battery_volt={tag.battery} {timestamp}")
+                print(f"temperature,mac={mac} temp_C={tag.temperature} {timestamp}")
+                print(f"humidity,mac={mac} humidity_percent={tag.humidity} {timestamp}")
+                print(f"pressure,mac={mac} pressure_hPa={tag.pressure} {timestamp}")
+                print(f"acceleration_x,mac={mac} acceleration_g={tag.acceleration.x} {timestamp}")
+                print(f"acceleration_y,mac={mac} acceleration_g={tag.acceleration.y} {timestamp}")
+                print(f"acceleration_z,mac={mac} acceleration_g={tag.acceleration.z} {timestamp}")
+                print(f"battery,mac={mac} battery_volt={tag.battery} {timestamp}")
         else:
             parser.error(f'{args.format} is currently not supported')
     except KeyError:
