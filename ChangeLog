@@ -1,0 +1,5 @@
+2021-05-23 Fredrik Salomonsson <plattfot@posteo.net>
+	* 0.1.0:
+	Support for waybar
+	Support for influxdb
+	Build it locally with guix
