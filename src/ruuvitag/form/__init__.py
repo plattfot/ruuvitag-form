@@ -112,7 +112,7 @@ class Tag:
         self.battery = battery
         self.time = time
     def __repr__(self):
-        return f"{self.temperature}C {self.humidity}% {self.pressure}hPa"
+        return f"{self.temperature:.2f}C {self.humidity:.2f}% {self.pressure:.2f}hPa"
 
 def fetch_tags(address):
 
